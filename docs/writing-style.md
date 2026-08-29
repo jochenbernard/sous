@@ -37,11 +37,11 @@ which is marked there as no part of the specification.
 Three words carry every requirement, and `spec/02-conformance.md` defines
 them.
 
-| Word     | Meaning                                                       |
-| -------- | ------------------------------------------------------------- |
-| must     | A requirement. Breaking it conforms to nothing.                |
-| must not | A prohibition, read the same way.                             |
-| may      | A permission. Both choices conform.                           |
+| Word       | Meaning                                         |
+| ---------- | ----------------------------------------------- |
+| `must`     | A requirement. Breaking it conforms to nothing.  |
+| `must not` | A prohibition, read the same way.               |
+| `may`      | A permission. Both choices conform.             |
 
 Write them in lowercase. Uppercase adds emphasis the sentence already carries.
 
@@ -53,16 +53,16 @@ requirement, and a rule needing one has not been decided.
 A format does not state, ask, want, or know. Give what it does: a header
 carries fields, an annotation opens a span, a marker holds an amount constant.
 
-| Banned          | Write instead                |
-| --------------- | ---------------------------- |
-| states          | is, holds, contains, gives   |
-| asks, asks for  | requires, takes              |
-| wants, expects  | requires                     |
-| knows, knows of | names, defines               |
-| owes            | returns, provides            |
-| which is what   | end the sentence             |
-| nobody wrote    | name the actual condition    |
-| of its own      | delete it                    |
+| Banned                | Write instead              |
+| --------------------- | -------------------------- |
+| `states`              | is, holds, contains, gives |
+| `asks`, `asks for`    | requires, takes            |
+| `wants`, `expects`    | requires                   |
+| `knows`, `knows of`   | names, defines             |
+| `owes`                | returns, provides          |
+| `which is what`       | end the sentence           |
+| `nobody wrote`        | name the actual condition  |
+| `of its own`          | delete it                  |
 
 `so the` and `rather than` are restricted: admissible when they carry
 information, never as connective filler between clauses already clear without
@@ -102,6 +102,8 @@ files do not cover adds it to one of them, and the recipe stays cookable.
   cannot be broken are exempt.
 - Reference another chapter with a relative link to its file, as in
   [Amounts](../spec/07-amounts.md).
+- Number a chapter's sections for citation, as in `## 3.2 Lines` under
+  `# 3. The document`. A chapter short enough to need none has none.
 - Tag a fenced block holding Sous source `sous`, and one holding a shell
   command `bash`. Lowercase, matching the file extension. A block holding
   neither, such as the rejected and accepted sentences under Rule 1, is
@@ -113,6 +115,10 @@ files do not cover adds it to one of them, and the recipe stays cookable.
 ## Checking
 
 Run these from the repository root. Each is expected to print nothing.
+
+A word inside a code span is named, not used, so the two vocabulary checks
+strip code spans before matching. That is what lets Rule 3's table, Rule 2's
+`should`, and the commands here describe a banned word without reporting it.
 
 ```bash
 # Non-ASCII anywhere, which also catches a literal em-dash
@@ -133,15 +139,17 @@ find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
 find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
     FNR == 1 { fenced = 0 }
     /^```/ { fenced = !fenced; next }
-    fenced || /^\|/ { next }
-    tolower(" " $0 " ") ~ /[^a-z](states|stating|stated|asks|asking|wants|expects|knows|owes|of its own|which is what|nobody wrote)[^a-z]/ {
+    fenced { next }
+    { bare = $0; gsub(/`[^`]*`/, "", bare) }
+    tolower(" " bare " ") ~ /[^a-z](states|stating|stated|asks|asking|wants|expects|knows|owes|of its own|which is what|nobody wrote)[^a-z]/ {
         print FILENAME ":" FNR ": " $0
     }'
 
-# "should", which Rule 2 replaces with must or may. This guide names the word
-# to ban it, so it is not searched.
-grep -rniE '\bshould\b' spec README.md CLAUDE.md
+# "should", which Rule 2 replaces with must or may
+find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
+    FNR == 1 { fenced = 0 }
+    /^```/ { fenced = !fenced; next }
+    fenced { next }
+    { bare = $0; gsub(/`[^`]*`/, "", bare) }
+    tolower(bare) ~ /[^a-z]should[^a-z]/ { print FILENAME ":" FNR ": " $0 }'
 ```
-
-Each command skips tables and fenced code blocks where a rule exempts them, so
-Rule 3's own table and the commands above do not report themselves.

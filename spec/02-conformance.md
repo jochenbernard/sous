@@ -33,17 +33,17 @@ Each chapter gives the recovery for the constructs it defines. Two rules hold
 across all of them:
 
 - A construct that is not well formed is read as the literal characters it is
-  written with, and the text around it is read as written.
+written with, and the text around it is read as written.
 - Every recovery must be reported.
 
 ## 2.5 Reports
 
 A report carries a severity.
 
-| Severity | Reach                                                                     |
-| -------- | ------------------------------------------------------------------------- |
+| Severity | Reach                                                                         |
+| -------- | ----------------------------------------------------------------------------- |
 | warning  | One construct, which is preserved. The rest of the document reads as written. |
-| error    | The whole recipe. What was read is not what the document describes.        |
+| error    | The whole recipe. What was read is not what the document describes.           |
 
 A report produced while reading carries the range of source it covers. A report
 produced by [Validation](11-validation.md) carries none, because validation

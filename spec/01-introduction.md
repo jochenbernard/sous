@@ -26,9 +26,9 @@ Wipe a #crepe pan# with @{10 g} butter@ over medium heat, ladle in a thin layer,
 and cook each crepe for ~1 min~ a side until lacy and gold.
 ```
 
-The header between the `---` fences carries what holds for the whole recipe.
-The body carries the steps, one to a paragraph. Within a step a sigil opens a
-span around the words naming an ingredient, a piece of cookware, a duration, or
+The header between the `---` fences carries what holds for the whole recipe. The
+body carries the steps, one to a paragraph. Within a step a sigil opens a span
+around the words naming an ingredient, a piece of cookware, a duration, or
 something produced elsewhere in the file. The prose between those spans is read
 as written.
 
@@ -45,7 +45,7 @@ outside it, and a document is free in all of them.
 
 | Left open           | Consequence                                                              |
 | ------------------- | ------------------------------------------------------------------------ |
-| The prose of a step | Wording, order, and detail are the writer's. Only the spans are read.     |
+| The prose of a step | Wording, order, and detail are the writer's. Only the spans are read.    |
 | Units               | A unit is text. Two spellings of one unit are two units.                 |
 | Names               | An ingredient, a cookware, and a group name are text.                    |
 | Temperatures        | Nothing marks one. `bake at 190C` is prose.                              |

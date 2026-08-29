@@ -27,8 +27,8 @@ and cook each crepe for ~1 min~ a side until lacy and gold.
 
 Sous is pre-1.0, and the format may change between minor versions.
 
-The specification is being written chapter by chapter. Every chapter file
-exists; a chapter not yet written holds its scope and nothing else.
+All fourteen chapters are written, with numbered sections that cite one
+another.
 
 ## The specification
 
@@ -37,19 +37,19 @@ exists; a chapter not yet written holds its scope and nothing else.
 
 ## Layout
 
-| Path                       | Contents                                    |
-| -------------------------- | ------------------------------------------- |
-| [`spec/`](spec/)           | The specification, one chapter per file     |
-| [`examples/`](examples/)   | The recipes the chapters quote              |
-| [`docs/`](docs/)           | Guidance for writing the specification      |
+| Path                     | Contents                                |
+| ------------------------ | --------------------------------------- |
+| [`spec/`](spec/)         | The specification, one chapter per file |
+| [`examples/`](examples/) | The recipes the chapters quote          |
+| [`docs/`](docs/)         | Guidance for writing the specification  |
 
 ## Implementations
 
 This section is no part of the specification.
 
-| Implementation                                       | Language |
-| ---------------------------------------------------- | -------- |
-| [SousKit](https://github.com/jochenbernard/souskit)  | Swift    |
+| Implementation                                      | Language |
+| --------------------------------------------------- | -------- |
+| [SousKit](https://github.com/jochenbernard/souskit) | Swift    |
 
 ## License
 

@@ -17,8 +17,8 @@ is written; follow it for every line.
 
 ## Layout
 
-| Path        | Contents                                                    |
-| ----------- | ----------------------------------------------------------- |
-| `spec/`     | The specification, one chapter per file                     |
-| `examples/` | The recipes the chapters quote                              |
-| `docs/`     | Guidance for writing the specification                      |
+| Path        | Contents                                |
+| ----------- | --------------------------------------- |
+| `spec/`     | The specification, one chapter per file |
+| `examples/` | The recipes the chapters quote          |
+| `docs/`     | Guidance for writing the specification  |

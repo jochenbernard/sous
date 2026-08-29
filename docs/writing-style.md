@@ -39,7 +39,7 @@ them.
 
 | Word       | Meaning                                         |
 | ---------- | ----------------------------------------------- |
-| `must`     | A requirement. Breaking it conforms to nothing.  |
+| `must`     | A requirement. Breaking it conforms to nothing. |
 | `must not` | A prohibition, read the same way.               |
 | `may`      | A permission. Both choices conform.             |
 
@@ -53,16 +53,16 @@ requirement, and a rule needing one has not been decided.
 A format does not state, ask, want, or know. Give what it does: a header
 carries fields, an annotation opens a span, a marker holds an amount constant.
 
-| Banned                | Write instead              |
-| --------------------- | -------------------------- |
-| `states`              | is, holds, contains, gives |
-| `asks`, `asks for`    | requires, takes            |
-| `wants`, `expects`    | requires                   |
-| `knows`, `knows of`   | names, defines             |
-| `owes`                | returns, provides          |
-| `which is what`       | end the sentence           |
-| `nobody wrote`        | name the actual condition  |
-| `of its own`          | delete it                  |
+| Banned              | Write instead              |
+| ------------------- | -------------------------- |
+| `states`            | is, holds, contains, gives |
+| `asks`, `asks for`  | requires, takes            |
+| `wants`, `expects`  | requires                   |
+| `knows`, `knows of` | names, defines             |
+| `owes`              | returns, provides          |
+| `which is what`     | end the sentence           |
+| `nobody wrote`      | name the actual condition  |
+| `of its own`        | delete it                  |
 
 `so the` and `rather than` are restricted: admissible when they carry
 information, never as connective filler between clauses already clear without
@@ -104,6 +104,12 @@ files do not cover adds it to one of them, and the recipe stays cookable.
   [Amounts](../spec/07-amounts.md).
 - Number a chapter's sections for citation, as in `## 3.2 Lines` under
   `# 3. The document`. A chapter short enough to need none has none.
+- Cite a section as a link carrying its number, as in
+  `[3.2](03-document.md#32-lines)`, and a chapter as a link carrying its name.
+  A heading is never itself a link. Never break a link across two lines: the
+  wrap swallows the URL and the link dies silently.
+- Pad a table's columns so every pipe in it lines up, each column as wide as
+  its widest cell. `tools/format-tables.py --fix` does it.
 - Tag a fenced block holding Sous source `sous`, and one holding a shell
   command `bash`. Lowercase, matching the file extension. A block holding
   neither, such as the rejected and accepted sentences under Rule 1, is
@@ -124,8 +130,15 @@ strip code spans before matching. That is what lets Rule 3's table, Rule 2's
 # Non-ASCII anywhere, which also catches a literal em-dash
 LC_ALL=C grep -rn '[^ -~]' spec docs examples README.md CLAUDE.md
 
-# Double hyphen standing in for an em-dash
-grep -rnE '[^-]-{2}[^-]' spec docs examples README.md CLAUDE.md
+# Double hyphen standing in for an em-dash. A code span holds a command line,
+# where a double hyphen opens a flag, so code spans are stripped first.
+find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
+    FNR == 1 { fenced = 0 }
+    /^```/ { fenced = !fenced; next }
+    fenced { next }
+    { bare = $0; gsub(/`[^`]*`/, "", bare) }
+    bare ~ /[^-]--[^-]/ { print FILENAME ":" FNR ": " $0 }'
+grep -rnE '[^-]-{2}[^-]' examples
 
 # Lines over 80 characters
 find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
@@ -144,6 +157,14 @@ find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
     tolower(" " bare " ") ~ /[^a-z](states|stating|stated|asks|asking|wants|expects|knows|owes|of its own|which is what|nobody wrote)[^a-z]/ {
         print FILENAME ":" FNR ": " $0
     }'
+
+# Tables whose columns are not padded to one width
+python3 tools/format-tables.py
+
+# Links and anchors: every relative link resolves to a file, and every
+# fragment to a heading in it. A renamed heading breaks a citation
+# silently, so run this after any change to a heading.
+python3 tools/check-links.py
 
 # "should", which Rule 2 replaces with must or may
 find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '

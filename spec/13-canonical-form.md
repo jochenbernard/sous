@@ -43,12 +43,12 @@ escaped:
 
 - a sigil in prose that would open a span;
 - a backslash that would escape the character after it;
-- a `{` opening the name of a span that takes an amount, which would otherwise
-open a fence;
+- a `{` opening the name of a span that takes an amount, which would
+  otherwise open a fence;
 - a `}` inside a fence, which would otherwise close it early;
 - the start of a line that would open a heading;
-- the start of prose following a flag chain, which the chain would otherwise
-swallow.
+- the start of prose following a flag chain, which the chain would
+  otherwise swallow.
 
 ## 13.5 A body that would open a header
 

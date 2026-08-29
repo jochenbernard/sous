@@ -26,8 +26,7 @@ taste` carries no flag and the chain ends there.
 
 ## 9.3 Flags this specification does not name
 
-A flag whose name this specification does not name must be kept, in the order
-written, so a document using a flag from a later version reads and writes back
-unchanged.
+A flag this specification does not name must be kept, in the order written, so
+a document using a flag from a later version reads and writes back unchanged.
 
 A name repeated within one chain is kept once.

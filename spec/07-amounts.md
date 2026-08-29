@@ -7,7 +7,10 @@ values as well.
 ## 7.1 The fence
 
 A fence opens on `{` as the first character of a span's content and closes on
-the first `}` that is not escaped. Every sigil is inert between the braces.
+the first `}` that is not escaped. The search stops at a line break, as a
+span's does, so a fence closes on the line it opens on or not at all.
+
+Every sigil is inert between the braces.
 
 The content is trimmed. A fence holding nothing is an imprecise amount whose
 text is empty.

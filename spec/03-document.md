@@ -51,8 +51,9 @@ The header closes on the first fence after the one opening it. A header holding
 no lines is well formed, and so is a document that is only a header.
 
 A document whose header never closes is not well formed. Its recovery gives the
-rest of the document to the header and leaves no body, and must be reported as a
-warning.
+rest of the document to the header and leaves no body, and must be reported as
+an error: the body is swallowed, so what was read is not what the document
+describes.
 
 [The metadata header](04-metadata.md) reads the header's lines, and
 [The body](05-body.md) reads the body's.

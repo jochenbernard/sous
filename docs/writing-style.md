@@ -158,6 +158,9 @@ find spec docs README.md CLAUDE.md -name '*.md' | xargs awk '
         print FILENAME ":" FNR ": " $0
     }'
 
+# A section cited as bare text, and a list item losing its indent
+python3 tools/check-markdown.py
+
 # Tables whose columns are not padded to one width
 python3 tools/format-tables.py
 

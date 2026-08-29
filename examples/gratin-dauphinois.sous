@@ -1,0 +1,30 @@
+---
+title: Gratin Dauphinois
+language: en
+version: 1.0
+servings: 6
+yield: [1.8 kg]
+tags: [comfort food, french, make-ahead]
+diet: [vegetarian]
+allergens: [dairy]
+source: https://example.com/gratin-dauphinois
+author: Jean Dupont
+license: CC-BY-4.0
+image: images/gratin-dauphinois.jpg
+prep-time: 30 min
+cook-time: 1 h 30 min
+make-ahead: best assembled a day ahead and baked from cold
+nutrition:
+  calories: 3300 kcal
+  protein: 44 g
+---
+
+Rub a #gratin dish# with @{1 clove} garlic@, butter it with @{20 g} butter@, and
+heat the oven to 150C.
+
+Peel @{1.2 kg} potatoes@ and slice them 3 mm thick on a #mandoline#, then bring
+them to a simmer in @{500 ml} cream@ and @{300 ml} milk@ in a #heavy pot# with
+@salt@:staple, @black pepper@:staple, and @{1/4 tsp} nutmeg@.
+
+Tip everything into the dish, level the top, and bake for ~1 h 30 min~ until the
+potatoes are tender and the top is deep gold. Rest it ~15 min~ before serving.

@@ -5,7 +5,7 @@ The specification for Sous, a plain text format for recipes.
 Sous writes a recipe the way a cook reads one: a metadata header, then steps as
 prose, with the ingredients, cookware, timers, and intermediates marked inline.
 
-```
+```sous
 ---
 title: Crepes
 servings: 4

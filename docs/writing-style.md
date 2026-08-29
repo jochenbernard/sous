@@ -102,6 +102,10 @@ files do not cover adds it to one of them, and the recipe stays cookable.
   cannot be broken are exempt.
 - Reference another chapter with a relative link to its file, as in
   [Amounts](../spec/07-amounts.md).
+- Tag a fenced block holding Sous source `sous`, and one holding a shell
+  command `bash`. Lowercase, matching the file extension. A block holding
+  neither, such as the rejected and accepted sentences under Rule 1, is
+  tagged with nothing.
 - Exempt from all of the above: `LICENSE`, which holds the Creative Commons
   legal code verbatim, and `.gitignore`, which is generated below its custom
   section.

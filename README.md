@@ -43,13 +43,14 @@ another.
 | [`examples/`](examples/) | The recipes the chapters quote          |
 | [`docs/`](docs/)         | Guidance for writing the specification  |
 
-## Implementations
+## Implementations and tools
 
 This section is no part of the specification.
 
-| Implementation                                      | Language |
-| --------------------------------------------------- | -------- |
-| [SousKit](https://github.com/jochenbernard/souskit) | Swift    |
+| Project                                                 | Kind                                                               |
+| ------------------------------------------------------- | ------------------------------------------------------------------ |
+| [SousKit](https://github.com/jochenbernard/souskit)     | A Swift package that reads, writes, validates, and scales a recipe |
+| [SousSkill](https://github.com/jochenbernard/sousskill) | A Claude plugin for writing and editing a recipe                   |
 
 ## License
 

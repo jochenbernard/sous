@@ -29,8 +29,8 @@ The direction is fixed. An implementation may cite a chapter; a chapter cites
 no implementation. A question the text leaves open is answered by deciding it
 here, never by reading what some program happens to do.
 
-The one exception is the Implementations section of the repository README,
-which is marked there as no part of the specification.
+The one exception is the Implementations and tools section of the repository
+README, which is marked there as no part of the specification.
 
 ## Rule 2: the normative vocabulary is fixed
 
